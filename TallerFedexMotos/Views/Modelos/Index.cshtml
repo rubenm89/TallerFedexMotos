@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TallerFedexMotos.Models.Modelo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Modelos</h1>
+
+<p>
+    <a asp-action="Create">Crear nuevo</a>
+</p>
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreModelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.marca)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreModelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.marca.nombreMarca)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<partial name="_paginador" for="@ViewData["paginador"]" />

@@ -1,0 +1,42 @@
+﻿@model TallerFedexMotos.Models.Moto
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Borrar</h1>
+
+<h3>¿Estás seguro de que quieres eliminar esto?</h3>
+<div>
+    <h4>Moto</h4>
+    <hr />
+    <dl class="row">  
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.modelo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.modelo.nombreModelo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.año)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.año)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.imagenMoto)
+        </dt>
+        <dd class="col-sm-10">
+            @if (!string.IsNullOrEmpty(Model.imagenMoto))
+             {
+                <img src="~/Imagenes/fotoMotos/@Model.imagenMoto" class="rounded-circle" style="max-width:50px" asp-append-version="true" />
+             }
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Borrar" class="btn btn-danger" /> |
+        <a asp-action="Index">Atras</a>
+    </form>
+</div>

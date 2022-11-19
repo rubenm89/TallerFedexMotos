@@ -1,0 +1,54 @@
+﻿@model TallerFedexMotos.Models.Moto
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar</h1>
+
+<h4>Moto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />  
+            <div class="form-group">
+                <label asp-for="modeloId" class="control-label"></label>
+                <select asp-for="modeloId" class="form-control" asp-items="ViewBag.modeloId"></select>
+                <span asp-validation-for="modeloId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="año" class="control-label"></label>
+                <input asp-for="año" class="form-control" />
+                <span asp-validation-for="año" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imagenMoto" class="control-label">Seleccione imagen moto</label>
+                <input name="seleccionImg" id="seleccionImg" type="file" accept="image/jpeg" />
+                <span asp-validation-for="imagenMoto" class="text-danger"></span>
+            </div>
+
+            <div>
+                @if (!string.IsNullOrEmpty(Model.imagenMoto))
+                {
+                    <img src="~/Imagenes/fotoMotos/@Model.imagenMoto" id="imagen" class="rounded-circle" style="max-width:70px" asp-append-version="true" />
+                }
+            </div>
+            <input type="hidden" asp-for="imagenMoto" />
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-danger" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Atras</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="~/js//preview.js"></script>

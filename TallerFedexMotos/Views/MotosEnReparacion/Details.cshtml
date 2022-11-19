@@ -1,0 +1,30 @@
+﻿@model TallerFedexMotos.Models.MotoEnReparacion
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Moto En Reparacion</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.moto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.moto.modelo.nombreModelo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.trabajoRealizado)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.trabajoRealizado)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Atras</a>
+</div>
